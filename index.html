@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forever With You 💍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400&family=Noto+Sans+Tamil&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+   background:linear-gradient(135deg,#2b0000,#4a0016,#1a0008);
+  color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins',sans-serif;
+    
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Soft mobile glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#ff7aa2,transparent 60%);
+    top:-150px;
+    right:-150px;
+    opacity:0.35;
+    animation:moveGlow 8s infinite alternate ease-in-out;
+}
+@keyframes moveGlow{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    font-size:22px;
+    animation:floatUp 4s linear infinite;
+}
+@keyframes floatUp{
+    0%{transform:translateY(100vh);opacity:1}
+    100%{transform:translateY(-10vh);opacity:0}
+}
+
+/* Container */
+.container{
+    width:95%;
+    max-width:1100px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(18px);
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 0 40px rgba(255,120,150,0.4);
+    border:1px solid rgba(255,255,255,0.25);
+}
+
+/* Pages */
+.page{display:none;text-align:center}
+.page.active{display:block;animation:fade .6s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.7rem;
+    color:#ffd6e0;
+    text-shadow:0 0 10px rgba(255,200,220,0.6);
+}
+
+p{font-size:0.95rem;margin:20px 0;line-height:1.6}
+
+.divider{
+    width:60px;height:2px;background:#ffd6e0;margin:15px auto;
+}
+
+/* Buttons */
+.btn{
+    padding:9px 24px;
+    border-radius:30px;
+    border:none;
+    background:linear-gradient(45deg,#ff7aa2,#ffb6c1);
+    color:#4b0f2f;
+    cursor:pointer;
+    margin:8px;
+    font-size:0.85rem;
+    box-shadow:0 4px 15px rgba(255,120,150,0.4);
+}
+.btn-no{
+    background:transparent;
+    border:1px solid #fff;
+    color:#fff;
+}
+
+/* Gallery */
+.gallery{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+.card{
+    width:100%;
+    height:300px;
+    background:rgba(255,255,255,0.15);
+    border-radius:18px;
+    overflow:hidden;
+    backdrop-filter:blur(12px);
+}
+.card img, .card video{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+.quote{
+    padding:8px;
+    font-size:0.8rem;
+    text-align:center;
+    font-style:italic;
+}
+
+/* 🌸 MOBILE */
+@media(max-width:768px){
+    .gallery{flex-wrap:wrap;justify-content:center}
+    .card{width:47%}
+    .card img,.card video{height:180px}
+}
+@media(max-width:480px){
+    .card{width:100%}
+    h1{font-size:1.4rem}
+    p{font-size:0.85rem}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- 🎵 Intro Song -->
+<audio id="introMusic" autoplay loop>
+    <source src="song/intro.mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- ❤️ Main Love Song -->
+<audio id="loveMusic" loop>
+    <source src="song/music.mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>To My Dear Chellakutty ❤️</h1>
+    <div class="divider"></div>
+    <p>I want to ask you something very special...</p>
+    <button class="btn" onclick="nextPage(2)">Continue</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Dream ✨</h1>
+    <div class="divider"></div>
+    <p>She's a dreamer, and he is her dream...⭐</p>
+    <button class="btn" onclick="nextPage(3)">Next</button>
+</div>
+
+<!-- PROPOSAL -->
+<div class="page" id="page3">
+    <h1>Will You Be My Valentine? 💍</h1>
+    <div class="divider"></div>
+    <button class="btn" onclick="yesAnswer()">YES ❤️</button>
+    <button class="btn btn-no" onclick="noAnswer()">NO 💔</button>
+</div>
+
+<!-- GALLERY -->
+<div class="page" id="page4">
+    <h1>Our Beautiful Memories 💖</h1>
+    <div class="divider"></div>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="ghibili1.png">
+            <div class="quote">You are my never ending thought💭</div>
+        </div>
+
+        <div class="card">
+            <img src="ghibli3.png">
+            <div class="quote"> Souls dont't meet by accident.</div>
+        </div>
+
+        <div class="card">
+            <video src="video.mp4" autoplay muted loop></video>
+            <div class="quote">You will always be my 11:11⭐</div>
+        </div>
+
+        <div class="card">
+            <img src="gib2.png">
+            <div class="quote">You are always My fav😍</div>
+        </div>
+    </div>
+
+    <button class="btn" style="margin-top:20px" onclick="nextPage(5)">Read My Heart</button>
+</div>
+
+<!-- TAMIL PAGE -->
+<div class="page" id="page5">
+    <h1 class="tamil">  To my hardworking man 💖</h1>
+    <div class="divider"></div>
+    <p class="tamil">
+       For the first time, I let someone cross my boundaries. For the first time, I chose to give someone a chance, and that someone was you.
+       <br>
+     
+    </p>
+</div>
+
+<!-- NO PAGE -->
+<div class="page" id="page6">
+    <h1>Always Respect You 💔</h1>
+    <p>You will always be special to me.</p>
+</div>
+
+</div>
+
+<script>
+function nextPage(p){
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    document.getElementById('page'+p).classList.add('active');
+}
+
+function yesAnswer(){
+    nextPage(4);
+
+    // stop intro music
+    document.getElementById("introMusic").pause();
+
+    // play love song
+    document.getElementById("loveMusic").play();
+
+    createHearts();
+}
+
+function noAnswer(){nextPage(6);}
+
+function createHearts(){
+    for(let i=0;i<25;i++){
+        let h=document.createElement("div");
+        h.innerHTML="❤️";
+        h.className="heart";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),4000);
+    }
+}
+</script>
+
+</body>
+</html>
